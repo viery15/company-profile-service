@@ -59,6 +59,11 @@ class Handler extends ExceptionHandler
             'message' => $exception->getMessage(),
         ];
 
+        if ($exception instanceof CommonException) {
+            $response['errorCode'] = $exception->getErrorCode();
+            $statusCode = $exception->getStatusCode();
+        }
+
         if (config('app.debug')) {
             $response['debug'] = [
                 'exception' => get_class($exception),
