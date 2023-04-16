@@ -1,0 +1,107 @@
+2023-03-25 08:07:55,907 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2023-03-25 08:07:55,923 INFO supervisord started with pid 1
+2023-03-25 08:07:56,931 INFO spawned: 'laravel-horizon' with pid 9
+2023-03-25 08:07:56,938 INFO spawned: 'laravel-worker_00' with pid 10
+2023-03-25 08:07:57,941 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:07:57,943 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:00,181 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:01,201 INFO spawned: 'laravel-horizon' with pid 16
+2023-03-25 08:08:02,236 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:02,795 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:03,806 INFO spawned: 'laravel-horizon' with pid 19
+2023-03-25 08:08:04,222 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:04,633 INFO spawned: 'laravel-worker_00' with pid 22
+2023-03-25 08:08:04,639 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:05,645 INFO spawned: 'laravel-horizon' with pid 25
+2023-03-25 08:08:05,647 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:06,461 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:08,475 INFO spawned: 'laravel-horizon' with pid 29
+2023-03-25 08:08:09,469 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:09,470 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:10,276 INFO spawned: 'laravel-horizon' with pid 32
+2023-03-25 08:08:10,277 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:11,009 INFO spawned: 'laravel-worker_00' with pid 35
+2023-03-25 08:08:12,024 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:12,028 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:12,029 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:13,043 INFO spawned: 'laravel-horizon' with pid 39
+2023-03-25 08:08:13,834 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:14,844 INFO spawned: 'laravel-horizon' with pid 42
+2023-03-25 08:08:15,699 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:16,924 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:17,933 INFO spawned: 'laravel-horizon' with pid 45
+2023-03-25 08:08:17,938 INFO spawned: 'laravel-worker_00' with pid 46
+2023-03-25 08:08:18,941 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:18,943 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:19,097 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:20,108 INFO spawned: 'laravel-horizon' with pid 52
+2023-03-25 08:08:20,924 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:21,933 INFO spawned: 'laravel-horizon' with pid 55
+2023-03-25 08:08:23,165 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:23,167 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:23,168 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:24,184 INFO spawned: 'laravel-horizon' with pid 58
+2023-03-25 08:08:24,198 INFO spawned: 'laravel-worker_00' with pid 59
+2023-03-25 08:08:25,205 INFO success: laravel-horizon entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:25,217 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:25,224 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:26,197 INFO spawned: 'laravel-horizon' with pid 65
+2023-03-25 08:08:27,023 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:28,032 INFO spawned: 'laravel-horizon' with pid 68
+2023-03-25 08:08:28,941 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:29,237 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:30,242 INFO spawned: 'laravel-worker_00' with pid 71
+2023-03-25 08:08:31,256 INFO spawned: 'laravel-horizon' with pid 72
+2023-03-25 08:08:31,258 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:32,220 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:35,234 INFO spawned: 'laravel-horizon' with pid 78
+2023-03-25 08:08:35,643 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:36,101 INFO spawned: 'laravel-worker_00' with pid 81
+2023-03-25 08:08:36,108 INFO exited: laravel-horizon (exit status 1; not expected)
+2023-03-25 08:08:37,111 INFO gave up: laravel-horizon entered FATAL state, too many start retries too quickly
+2023-03-25 08:08:37,467 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:42,100 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:43,113 INFO spawned: 'laravel-worker_00' with pid 85
+2023-03-25 08:08:44,122 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:47,894 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:48,908 INFO spawned: 'laravel-worker_00' with pid 89
+2023-03-25 08:08:49,917 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:53,678 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:08:54,691 INFO spawned: 'laravel-worker_00' with pid 93
+2023-03-25 08:08:56,660 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:08:59,816 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:00,827 INFO spawned: 'laravel-worker_00' with pid 97
+2023-03-25 08:09:01,834 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:05,662 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:06,674 INFO spawned: 'laravel-worker_00' with pid 101
+2023-03-25 08:09:07,680 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:12,640 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:13,653 INFO spawned: 'laravel-worker_00' with pid 105
+2023-03-25 08:09:14,660 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:18,558 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:19,567 INFO spawned: 'laravel-worker_00' with pid 109
+2023-03-25 08:09:20,572 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:24,439 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:25,414 INFO spawned: 'laravel-worker_00' with pid 113
+2023-03-25 08:09:26,419 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:30,235 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:31,241 INFO spawned: 'laravel-worker_00' with pid 117
+2023-03-25 08:09:32,246 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:36,314 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:37,326 INFO spawned: 'laravel-worker_00' with pid 121
+2023-03-25 08:09:38,333 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:43,133 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:44,147 INFO spawned: 'laravel-worker_00' with pid 125
+2023-03-25 08:09:45,152 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:09:49,135 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:09:50,147 INFO spawned: 'laravel-worker_00' with pid 129
+2023-03-25 08:09:51,152 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:10:17,502 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:10:18,515 INFO spawned: 'laravel-worker_00' with pid 133
+2023-03-25 08:10:19,519 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:10:23,446 INFO exited: laravel-worker_00 (exit status 0; expected)
+2023-03-25 08:10:24,455 INFO spawned: 'laravel-worker_00' with pid 137
+2023-03-25 08:10:26,421 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-03-25 08:10:27,425 WARN received SIGQUIT indicating exit request
+2023-03-25 08:10:27,426 INFO waiting for laravel-worker_00 to die
+2023-03-25 08:10:27,439 INFO stopped: laravel-worker_00 (exit status 0)
