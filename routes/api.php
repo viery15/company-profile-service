@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::post('/users', [UserController::class, 'store']);
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::post('/users', [UserController::class, 'store']);
+});
 
 Route::post('login', [LoginController::class, 'login']);
