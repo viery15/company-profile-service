@@ -16,6 +16,8 @@ class PostService
 
     public function create(array $attributes): Post
     {
+        $user = getUserFromToken();
+        $attributes['createdBy'] = $user->id;
         return $this->postRepository->create($attributes);
     }
 

@@ -3,13 +3,13 @@
 namespace App\Domain\Auth;
 
 use App\Exceptions\CommonException;
-use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginService
 {
     public function login(array $credentials)
     {
-        if (!$token = Auth::guard('jwt')->attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             throw new CommonException('Invalid Credentials', 'INVALID_CREDENTIALS', 401);
         }
 
