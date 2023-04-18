@@ -17,7 +17,7 @@ class CreatePostsAndCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('seq')->unique()->nullable(true);
-            $table->boolean('pinToDashboard')->nullable(true);
+            $table->boolean('pinToMenu')->nullable(true);
             $table->timestamps();
         });
 

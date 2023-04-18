@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Domain\Category\Repositories\CategoryRepository;
 use App\Domain\Post\Entities\Post;
 use App\Domain\Post\Repositories\PostRepository;
 use App\Domain\User\Repositories\UserRepository;
+use App\Infrastructure\Category\Repositories\CategoryEloquentRepository;
 use App\Infrastructure\Post\Repositories\PostEloquentRepository;
 use App\Infrastructure\User\Repositories\UserEloquentRepository;
 use App\Models\User;
@@ -24,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->bind(PostRepository::class, function () {
             return new PostEloquentRepository(new Post());
+        });
+        $this->app->bind(CategoryRepository::class, function () {
+            return new CategoryEloquentRepository(new Post());
         });
     }
 
