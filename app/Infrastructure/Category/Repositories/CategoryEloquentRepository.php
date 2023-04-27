@@ -7,6 +7,11 @@ use App\Domain\Category\Repositories\CategoryRepository;
 
 class CategoryEloquentRepository implements CategoryRepository
 {
+    public function findAll(): array
+    {
+        return Category::orderBy('name')->get()->toArray();
+    }
+
     public function create(array $attributes): Category
     {
         return Category::create($attributes);

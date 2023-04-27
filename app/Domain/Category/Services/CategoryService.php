@@ -14,6 +14,11 @@ class CategoryService
         $this->categoryRepository = $categoryRepository;
     }
 
+    public function findAll(): array
+    {
+        return $this->categoryRepository->findAll();
+    }
+
     public function create(array $attributes): Category
     {
         return $this->categoryRepository->create($attributes);

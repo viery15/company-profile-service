@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/users', [UserController::class, 'store']);
     Route::post('/posts', [PostController::class, 'store']);
+
     Route::post('/categories', [CategoryController::class, 'store']);
+    Route::get('/categories', [CategoryController::class, 'findAll']);
 });
 
 Route::post('login', [LoginController::class, 'login']);

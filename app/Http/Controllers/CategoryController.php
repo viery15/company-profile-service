@@ -14,14 +14,24 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
 
+    public function findAll()
+    {
+        $result = $this->categoryService->findAll();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreateCategoryRequest $request)
     {
-        $user = $this->categoryService->create($request->validated());
+        $result = $this->categoryService->create($request->validated());
 
         return response()->json([
             'success' => true,
             'message' => 'Post created successfully.',
-            'data' => $user,
+            'data' => $result,
         ], 201);
     }
 }
