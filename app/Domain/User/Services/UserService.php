@@ -14,6 +14,11 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
+    public function findAll(): array
+    {
+        return $this->userRepository->findAll();
+    }
+
     public function create(array $attributes): User
     {
         return $this->userRepository->create($attributes);

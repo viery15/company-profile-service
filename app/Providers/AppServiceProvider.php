@@ -9,7 +9,8 @@ use App\Domain\User\Repositories\UserRepository;
 use App\Infrastructure\Category\Repositories\CategoryEloquentRepository;
 use App\Infrastructure\Post\Repositories\PostEloquentRepository;
 use App\Infrastructure\User\Repositories\UserEloquentRepository;
-use App\Models\User;
+use App\Domain\User\Entities\User;
+use App\Domain\Category\Entities\Category;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             return new PostEloquentRepository(new Post());
         });
         $this->app->bind(CategoryRepository::class, function () {
-            return new CategoryEloquentRepository(new Post());
+            return new CategoryEloquentRepository(new Category());
         });
     }
 

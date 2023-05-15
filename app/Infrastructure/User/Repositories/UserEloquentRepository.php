@@ -7,6 +7,11 @@ use App\Domain\User\Repositories\UserRepository;
 
 class UserEloquentRepository implements UserRepository
 {
+    public function findAll(): array
+    {
+        return User::get()->toArray();
+    }
+
     public function create(array $attributes): User
     {
         return User::create($attributes);

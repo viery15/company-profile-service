@@ -14,6 +14,16 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    public function findAll()
+    {
+        $result = $this->userService->findAll();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreateUserRequest $request)
     {
         $user = $this->userService->create($request->validated());
