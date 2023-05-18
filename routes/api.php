@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConfigurationController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'jwt.auth'], function () {
@@ -14,6 +15,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::post('/categories', [CategoryController::class, 'store']);
     Route::get('/categories', [CategoryController::class, 'findAll']);
+
+    Route::get('/configurations', [ConfigurationController::class, 'findAll']);
 });
 
 Route::post('login', [LoginController::class, 'login']);
