@@ -1,31 +1,19 @@
-# Set the base image to the official PHP image with Apache
 FROM php:8.2.4-apache
 
-# Install required PHP extensions
-RUN docker-php-ext-install pdo_mysql
+RUN apk add --no-cache nginx wget
 
-# Set the working directory
-WORKDIR /var/www/html
+RUN mkdir -p /run/nginx
 
-# Copy the Laravel application files to the container
-COPY . /var/www/html
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
-# Install composer dependencies
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-interaction --no-dev --prefer-dist
+RUN mkdir -p /app
+COPY . /app
+COPY ./src /app
 
-# Set up permissions for Laravel storage and bootstrap directories
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/local/bin/composer"
+RUN cd /app && \
+    /usr/local/bin/composer install --no-dev
 
-# Set up Apache document root
-RUN sed -i -e 's/html/html\/public/g' /etc/apache2/sites-enabled/000-default.conf
+RUN chown -R www-data: /app
 
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
-RUN a2enmod rewrite
-RUN service apache2 restart
-
-# Expose port 80 for Apache
-EXPOSE 80
-
-# Start Apache web server
-CMD ["apache2-foreground"]
+CMD sh /app/docker/startup.sh
