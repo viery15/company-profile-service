@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('configurations', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->string('value')->unique();
+            $table->string('key')->unique();
+            $table->string('label');
+            $table->string('value');
             $table->timestamps();
         });
     }
