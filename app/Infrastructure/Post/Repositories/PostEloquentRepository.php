@@ -9,7 +9,9 @@ class PostEloquentRepository implements PostRepository
 {
     public function findAll(): array
     {
-        return Post::get()->toArray();
+        return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
+        ->select('posts.*', 'categories.name as category')
+        ->get()->toArray();
     }
 
     public function create(array $attributes): Post
