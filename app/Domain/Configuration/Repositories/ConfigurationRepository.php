@@ -7,5 +7,5 @@ use App\Domain\Configuration\Entities\Configuration;
 interface ConfigurationRepository
 {
     public function findAll(): array;
-    public function update(Configuration $configuration, array $attributes): bool;
+    public function patch(string $id, array $attributes): bool;
 }

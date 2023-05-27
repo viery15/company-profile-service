@@ -17,6 +17,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/categories', [CategoryController::class, 'findAll']);
 
     Route::get('/configurations', [ConfigurationController::class, 'findAll']);
+    Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 });
 
 Route::post('login', [LoginController::class, 'login']);

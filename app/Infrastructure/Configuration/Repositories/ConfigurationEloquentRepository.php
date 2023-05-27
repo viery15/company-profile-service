@@ -12,8 +12,8 @@ class ConfigurationEloquentRepository implements ConfigurationRepository
         return Configuration::get()->toArray();
     }
 
-    public function update(Configuration $configuration, array $attributes): bool
+    public function patch(string $id, array $attributes): bool
     {
-        return $configuration->update($attributes);
+        return Configuration::where('id', $id)->update($attributes);
     }
 }

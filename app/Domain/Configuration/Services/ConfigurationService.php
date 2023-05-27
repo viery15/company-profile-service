@@ -19,8 +19,10 @@ class ConfigurationService
         return $this->configurationRepository->findAll();
     }
 
-    public function update(Configuration $configuration, array $attributes): bool
+    public function patchBulk(array $configurations): void
     {
-        return $this->configurationRepository->update($configuration, $attributes);
+        foreach ($configurations as $configuration) {
+            $this->configurationRepository->patch($configuration['id'], $configuration);
+        }
     }
 }
