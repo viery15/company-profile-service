@@ -7,6 +7,11 @@ use App\Domain\Post\Repositories\PostRepository;
 
 class PostEloquentRepository implements PostRepository
 {
+    public function findAll(): array
+    {
+        return Post::get()->toArray();
+    }
+
     public function create(array $attributes): Post
     {
         return Post::create($attributes);

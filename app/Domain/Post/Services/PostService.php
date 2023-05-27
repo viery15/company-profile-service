@@ -14,6 +14,11 @@ class PostService
         $this->postRepository = $postRepository;
     }
 
+    public function findAll(): array
+    {
+        return $this->postRepository->findAll();
+    }
+
     public function create(array $attributes): Post
     {
         $user = getUserFromToken();

@@ -14,6 +14,16 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
+    public function findAll()
+    {
+        $result = $this->postService->findAll();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreatePostRequest $request)
     {
         $user = $this->postService->create($request->validated());
