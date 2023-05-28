@@ -34,4 +34,14 @@ class PostController extends Controller
             'data' => $user,
         ], 201);
     }
+
+    public function delete(string $id)
+    {
+        $this->postService->delete($id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Post deleted successfully.',
+        ], 200);
+    }
 }

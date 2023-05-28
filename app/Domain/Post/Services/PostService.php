@@ -31,8 +31,8 @@ class PostService
         return $this->postRepository->update($post, $attributes);
     }
 
-    public function delete(Post $post): bool
+    public function delete(string $id): bool
     {
-        return $this->postRepository->delete($post);
+        return $this->postRepository->delete($id);
     }
 }

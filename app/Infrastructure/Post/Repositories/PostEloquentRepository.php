@@ -10,8 +10,8 @@ class PostEloquentRepository implements PostRepository
     public function findAll(): array
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-        ->select('posts.*', 'categories.name as category')
-        ->get()->toArray();
+            ->select('posts.*', 'categories.name as category')
+            ->get()->toArray();
     }
 
     public function create(array $attributes): Post
@@ -24,8 +24,13 @@ class PostEloquentRepository implements PostRepository
         return $post->update($attributes);
     }
 
-    public function delete(Post $post): bool
+    public function delete(string $id): bool
     {
-        return $post->delete();
+        $post = Post::find($id);
+        if ($post) {
+            $post->delete();
+        }
+
+        return true;
     }
 }
