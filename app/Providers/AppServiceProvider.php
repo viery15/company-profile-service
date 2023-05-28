@@ -14,6 +14,9 @@ use App\Infrastructure\User\Repositories\UserEloquentRepository;
 use App\Domain\User\Entities\User;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Configuration\Entities\Configuration;
+use App\Domain\File\Entities\File;
+use App\Infrastructure\File\Repositories\FileEloquentRepository;
+use App\Domain\File\Repositories\FileRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->bind(ConfigurationRepository::class, function () {
             return new ConfigurationEloquentRepository(new Configuration());
+        });
+        $this->app->bind(FileRepository::class, function () {
+            return new FileEloquentRepository(new File());
         });
     }
 
