@@ -14,7 +14,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::get('/posts', [PostController::class, 'findAll']);
     Route::post('/posts', [PostController::class, 'store']);
-    Route::get('/posts/{path}', [PostController::class, 'findOneByPath']);
     Route::delete('/posts/{id}', [PostController::class, 'delete']);
 
     Route::post('/categories', [CategoryController::class, 'store']);
@@ -27,3 +26,4 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 });
 
 Route::post('login', [LoginController::class, 'login']);
+Route::get('/posts/{path}', [PostController::class, 'findOneByPath']);
