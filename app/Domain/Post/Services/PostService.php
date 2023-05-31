@@ -19,6 +19,11 @@ class PostService
         return $this->postRepository->findAll();
     }
 
+    public function findOneByPath(string $path): Post
+    {
+        return $this->postRepository->findOneByPath($path);
+    }
+
     public function create(array $attributes): Post
     {
         $user = getUserFromToken();

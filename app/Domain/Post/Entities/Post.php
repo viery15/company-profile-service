@@ -12,6 +12,8 @@ class Post extends Model
         'title',
         'categoryId',
         'content',
+        'path',
+        'thumbnail',
         'createdBy',
     ];
 }

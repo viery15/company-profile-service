@@ -14,6 +14,11 @@ class PostEloquentRepository implements PostRepository
             ->get()->toArray();
     }
 
+    public function findOneByPath(string $path): Post
+    {
+        return Post::where('path', $path)->first();
+    }
+
     public function create(array $attributes): Post
     {
         return Post::create($attributes);

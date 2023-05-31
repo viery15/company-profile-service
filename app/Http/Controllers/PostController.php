@@ -24,6 +24,16 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function findOneByPath(string $path)
+    {
+        $result = $this->postService->findOneByPath($path);
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreatePostRequest $request)
     {
         $user = $this->postService->create($request->validated());
