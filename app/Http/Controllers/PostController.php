@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function findAll(Request $request)
     {
-        $categoryId = $request->query('category', null);
+        $categoryId = $request->query('categoryId', null);
         $result = $this->postService->findAll($categoryId);
 
         return response()->json([
