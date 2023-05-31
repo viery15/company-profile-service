@@ -7,10 +7,15 @@ use App\Domain\Post\Repositories\PostRepository;
 
 class PostEloquentRepository implements PostRepository
 {
-    public function findAll(): array
+    public function findAll($category): array
     {
+        $categoryId = $category != null ? $category : null;
+
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
             ->select('posts.*', 'categories.name as category')
+            ->when($categoryId !== null, function ($query) use ($categoryId) {
+                return $query->where('categoryId', $categoryId);
+            })
             ->get()->toArray();
     }
 

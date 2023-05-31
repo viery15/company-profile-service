@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\Post\Services\PostService;
 use App\Http\Requests\CreatePostRequest;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -14,9 +15,10 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
-    public function findAll()
+    public function findAll(Request $request)
     {
-        $result = $this->postService->findAll();
+        $categoryId = $request->query('category', null);
+        $result = $this->postService->findAll($categoryId);
 
         return response()->json([
             'success' => true,
