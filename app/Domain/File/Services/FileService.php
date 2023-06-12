@@ -18,13 +18,13 @@ class FileService
     public function upload($file)
     {
         $fileName = Str::random(40) . '_' . time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/images', $fileName);
+        $file->move(public_path('uploads'), $fileName);
 
         $fileModel = new File;
-        $fileModel->path = 'storage/images/' . $fileName;
+        $fileModel->path = 'uploads/' . $fileName;
 
         $fileModel->save();
 
-        return asset('storage/images/' . $fileName);
+        return asset('uploads/' . $fileName);
     }
 }
