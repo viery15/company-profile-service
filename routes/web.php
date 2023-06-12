@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,7 @@ Route::get('/test', function () {
 
 Route::post('/users', [UserController::class, 'store']);
 
+Route::get('/create-storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link created';
+});

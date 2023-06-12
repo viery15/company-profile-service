@@ -17,6 +17,8 @@ class CreatePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'categoryId' => 'required|integer|max:255',
             'content' => 'required|string',
+            'path' => 'required|string',
+            'thumbnail' => 'required|string',
         ];
     }
 }
