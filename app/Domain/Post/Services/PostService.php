@@ -24,6 +24,11 @@ class PostService
         return $this->postRepository->findOneByPath($path);
     }
 
+    public function findLatestPromo(): Post
+    {
+        return $this->postRepository->findLatestPromo();
+    }
+
     public function create(array $attributes): Post
     {
         $user = getUserFromToken();

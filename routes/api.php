@@ -27,3 +27,4 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 Route::post('login', [LoginController::class, 'login']);
 Route::get('/posts/{path}', [PostController::class, 'findOneByPath']);
 Route::get('/posts', [PostController::class, 'findAll']);
+Route::get('/latest-promo', [PostController::class, 'latestPromo']);

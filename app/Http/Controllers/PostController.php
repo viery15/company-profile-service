@@ -36,6 +36,16 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function latestPromo()
+    {
+        $result = $this->postService->findLatestPromo();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreatePostRequest $request)
     {
         $user = $this->postService->create($request->validated());

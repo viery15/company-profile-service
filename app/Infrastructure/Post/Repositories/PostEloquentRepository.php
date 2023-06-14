@@ -24,6 +24,11 @@ class PostEloquentRepository implements PostRepository
         return Post::where('path', $path)->first();
     }
 
+    public function findLatestPromo(): Post
+    {
+        return Post::where('categoryId', 2)->latest()->first();
+    }
+
     public function create(array $attributes): Post
     {
         return Post::create($attributes);
