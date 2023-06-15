@@ -18,7 +18,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/categories', [CategoryController::class, 'store']);
     Route::get('/categories', [CategoryController::class, 'findAll']);
 
-    Route::get('/configurations', [ConfigurationController::class, 'findAll']);
     Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 
     Route::post('/upload', [FileController::class, 'upload']);
@@ -28,3 +27,4 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('/posts/{path}', [PostController::class, 'findOneByPath']);
 Route::get('/posts', [PostController::class, 'findAll']);
 Route::get('/latest-promo', [PostController::class, 'latestPromo']);
+Route::get('/configurations', [ConfigurationController::class, 'findAll']);
