@@ -21,7 +21,8 @@ class PostEloquentRepository implements PostRepository
 
     public function findOneByPath(string $path): Post
     {
-        return Post::where('path', $path)->first();
+        return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
+            ->select('posts.*', 'categories.name as category')->where('path', $path)->first();
     }
 
     public function findLatestPromo(): Post
