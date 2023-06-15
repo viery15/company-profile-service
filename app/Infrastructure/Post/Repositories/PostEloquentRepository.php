@@ -12,7 +12,7 @@ class PostEloquentRepository implements PostRepository
         $categoryId = $category != null ? $category : null;
 
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-            ->select('posts.*', 'categories.name as category')
+            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')
             ->when($categoryId !== null, function ($query) use ($categoryId) {
                 return $query->where('categoryId', $categoryId);
             })
@@ -22,7 +22,7 @@ class PostEloquentRepository implements PostRepository
     public function findOneByPath(string $path): Post
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-            ->select('posts.*', 'categories.name as category')->where('path', $path)->first();
+            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')->where('path', $path)->first();
     }
 
     public function findLatestPromo(): Post
