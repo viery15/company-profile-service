@@ -36,6 +36,16 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function findOneById(string $id)
+    {
+        $result = $this->postService->findOneById($id);
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function latestPromo()
     {
         $result = $this->postService->findLatestPromo();
