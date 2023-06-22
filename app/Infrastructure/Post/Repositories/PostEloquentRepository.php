@@ -28,7 +28,9 @@ class PostEloquentRepository implements PostRepository
     public function findOneById(string $id): Post
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')->where('id', $id)->first();
+            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')
+            ->where('posts.id', $id)
+            ->first();
     }
 
     public function findLatestPromo(): Post
