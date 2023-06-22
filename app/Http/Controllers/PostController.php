@@ -76,4 +76,11 @@ class PostController extends Controller
             'message' => 'Post deleted successfully.',
         ], 200);
     }
+
+    public function patch(Request $request)
+    {
+        $this->postService->patch($request->all());
+
+        return response()->json([], 204);
+    }
 }

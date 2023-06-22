@@ -14,6 +14,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::post('/posts', [PostController::class, 'store']);
     Route::delete('/posts/{id}', [PostController::class, 'delete']);
+    Route::patch('/posts/{id}', [PostController::class, 'patch']);
 
     Route::post('/categories', [CategoryController::class, 'store']);
     Route::get('/categories', [CategoryController::class, 'findAll']);

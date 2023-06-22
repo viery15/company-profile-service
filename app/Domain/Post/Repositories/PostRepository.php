@@ -11,6 +11,6 @@ interface PostRepository
     public function findOneById(string $id): Post;
     public function findLatestPromo(): Post;
     public function create(array $attributes): Post;
-    public function update(Post $post, array $attributes): bool;
+    public function patch(string $id, array $attributes): bool;
     public function delete(string $id): bool;
 }

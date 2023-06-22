@@ -43,9 +43,9 @@ class PostEloquentRepository implements PostRepository
         return Post::create($attributes);
     }
 
-    public function update(Post $post, array $attributes): bool
+    public function patch($id, array $attributes): bool
     {
-        return $post->update($attributes);
+        return Post::where('id', $id)->update($attributes);
     }
 
     public function delete(string $id): bool

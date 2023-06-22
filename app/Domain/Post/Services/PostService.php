@@ -41,9 +41,9 @@ class PostService
         return $this->postRepository->create($attributes);
     }
 
-    public function update(Post $post, array $attributes): bool
+    public function patch(array $post): bool
     {
-        return $this->postRepository->update($post, $attributes);
+        return $this->postRepository->patch($post['id'], $post);
     }
 
     public function delete(string $id): bool
