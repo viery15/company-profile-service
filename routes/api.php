@@ -17,7 +17,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::patch('/posts/{id}', [PostController::class, 'patch']);
 
     Route::post('/categories', [CategoryController::class, 'store']);
-    Route::get('/categories', [CategoryController::class, 'findAll']);
 
     Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 
@@ -30,3 +29,5 @@ Route::get('/posts/id/{id}', [PostController::class, 'findOneById']);
 Route::get('/posts', [PostController::class, 'findAll']);
 Route::get('/latest-promo', [PostController::class, 'latestPromo']);
 Route::get('/configurations', [ConfigurationController::class, 'findAll']);
+
+Route::get('/categories', [CategoryController::class, 'findAll']);

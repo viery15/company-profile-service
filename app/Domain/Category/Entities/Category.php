@@ -2,6 +2,7 @@
 
 namespace App\Domain\Category\Entities;
 
+use App\Domain\Post\Entities\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -13,4 +14,9 @@ class Category extends Model
         'seq',
         'pinToMenu'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'id');
+    }
 }
