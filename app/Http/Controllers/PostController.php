@@ -18,7 +18,8 @@ class PostController extends Controller
     public function findAll(Request $request)
     {
         $categoryId = $request->query('categoryId', null);
-        $result = $this->postService->findAll($categoryId);
+        $limit = $request->query('limit', null);
+        $result = $this->postService->findAll($categoryId, $limit);
 
         return response()->json([
             'success' => true,

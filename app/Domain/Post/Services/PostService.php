@@ -14,9 +14,9 @@ class PostService
         $this->postRepository = $postRepository;
     }
 
-    public function findAll($category): array
+    public function findAll($category, $limit): array
     {
-        return $this->postRepository->findAll($category);
+        return $this->postRepository->findAll($category, $limit);
     }
 
     public function findOneByPath(string $path): Post
