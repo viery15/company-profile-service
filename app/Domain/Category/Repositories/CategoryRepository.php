@@ -8,6 +8,6 @@ interface CategoryRepository
 {
     public function findAll(): array;
     public function create(array $attributes): Category;
-    public function update(Category $category, array $attributes): bool;
+    public function patch(string $id, array $attributes): bool;
     public function delete(Category $category): bool;
 }

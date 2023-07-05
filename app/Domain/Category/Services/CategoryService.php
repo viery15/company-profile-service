@@ -24,9 +24,9 @@ class CategoryService
         return $this->categoryRepository->create($attributes);
     }
 
-    public function update(Category $category, array $attributes): bool
+    public function patch(string $id, array $category): bool
     {
-        return $this->categoryRepository->update($category, $attributes);
+        return $this->categoryRepository->patch($id, $category);
     }
 
     public function delete(Category $category): bool

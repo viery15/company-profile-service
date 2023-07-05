@@ -17,6 +17,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::patch('/posts/{id}', [PostController::class, 'patch']);
 
     Route::post('/categories', [CategoryController::class, 'store']);
+    Route::patch('/categories/{id}', [CategoryController::class, 'patch']);
 
     Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 

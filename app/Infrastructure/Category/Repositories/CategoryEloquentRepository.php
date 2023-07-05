@@ -17,11 +17,10 @@ class CategoryEloquentRepository implements CategoryRepository
         return Category::create($attributes);
     }
 
-    public function update(Category $category, array $attributes): bool
+    public function patch($id, array $attributes): bool
     {
-        return $category->update($attributes);
+        return Category::where('id', $id)->update($attributes);
     }
-
     public function delete(Category $category): bool
     {
         return $category->delete();

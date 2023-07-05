@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\Category\Services\CategoryService;
 use App\Http\Requests\CreateCategoryRequest;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -33,5 +34,12 @@ class CategoryController extends Controller
             'message' => 'Post created successfully.',
             'data' => $result,
         ], 201);
+    }
+
+    public function patch(string $id, Request $request)
+    {
+        $this->categoryService->patch($id, $request->all());
+
+        return response()->json([], 204);
     }
 }
