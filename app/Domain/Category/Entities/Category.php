@@ -13,7 +13,8 @@ class Category extends Model
         'name',
         'seq',
         'pinToMenu',
-        'showPosts'
+        'showPosts',
+        'thumbnail'
     ];
 
     public function posts()
