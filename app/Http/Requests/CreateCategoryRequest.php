@@ -17,6 +17,8 @@ class CreateCategoryRequest extends FormRequest
             'name' => 'required|string|max:255',
             'seq' => 'integer|max:255',
             'pinToMenu' => 'boolean',
+            'showPosts' => 'boolean',
+            'thumbnail' => 'string'
         ];
     }
 }
