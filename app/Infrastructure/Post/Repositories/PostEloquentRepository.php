@@ -19,7 +19,7 @@ class PostEloquentRepository implements PostRepository
             ->when($limit !== null, function ($query) use ($limit) {
                 return $query->limit($limit);
             })
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('created_at', 'DESC')
             ->get()->toArray();
     }
 
