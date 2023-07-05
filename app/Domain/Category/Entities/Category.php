@@ -12,7 +12,8 @@ class Category extends Model
     protected $fillable = [
         'name',
         'seq',
-        'pinToMenu'
+        'pinToMenu',
+        'showPosts'
     ];
 
     public function posts()
