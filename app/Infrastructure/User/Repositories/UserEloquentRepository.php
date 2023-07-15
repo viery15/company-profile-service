@@ -27,7 +27,7 @@ class UserEloquentRepository implements UserRepository
         return User::where('id', $id)->update(['isDeleted' => 1, 'isActive' => 0]);
     }
 
-    public function findOneByEmail(string $email): User
+    public function findOneByEmail(string $email): ?User
     {
         return User::where(['email' => $email, 'isDeleted' => 1])->first();
     }
