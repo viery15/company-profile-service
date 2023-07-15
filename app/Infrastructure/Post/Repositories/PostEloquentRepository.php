@@ -23,7 +23,7 @@ class PostEloquentRepository implements PostRepository
             ->get()->toArray();
     }
 
-    public function findOneByPath(string $path): Post
+    public function findOneByPath(string $path): ?Post
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
             ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')->where('path', $path)->first();

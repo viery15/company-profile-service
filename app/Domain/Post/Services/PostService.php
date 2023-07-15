@@ -4,6 +4,7 @@ namespace App\Domain\Post\Services;
 
 use App\Domain\Post\Entities\Post;
 use App\Domain\Post\Repositories\PostRepository;
+use App\Exceptions\CommonException;
 
 class PostService
 {
@@ -38,7 +39,20 @@ class PostService
     {
         $user = getUserFromToken();
         $attributes['createdBy'] = $user->id;
+        $attributes['path'] = $this->validateAndGeneratePathByTitle($attributes['title']);
+
         return $this->postRepository->create($attributes);
+    }
+
+    function validateAndGeneratePathByTitle(string $title)
+    {
+        $path = strtolower(str_replace(' ', '-', $title));
+        $pathExist = $this->postRepository->findOneByPath($path);
+        if ($pathExist != null) {
+            throw new CommonException("Post with title '$title' already exists, please change the title", 'POST_EXISTS', 400);
+        }
+
+        return $path;
     }
 
     public function patch(array $post): bool
