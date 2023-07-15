@@ -32,7 +32,7 @@ class UserService
         return $this->userRepository->create($attributes);
     }
 
-    public function update(String $id, array $attributes): bool
+    public function patch(String $id, array $attributes): bool
     {
         return $this->userRepository->patch($id, $attributes);
     }

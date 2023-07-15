@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -43,5 +44,12 @@ class UserController extends Controller
             'success' => true,
             'message' => 'User deleted successfully.',
         ], 200);
+    }
+
+    public function patch(string $id, Request $request)
+    {
+        $this->userService->patch($id, $request->all());
+
+        return response()->json([], 204);
     }
 }
