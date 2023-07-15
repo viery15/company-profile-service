@@ -9,7 +9,7 @@ class UserEloquentRepository implements UserRepository
 {
     public function findAll(): array
     {
-        return User::get()->toArray();
+        return User::where('isDeleted', 0)->get()->toArray();
     }
 
     public function create(array $attributes): User
@@ -22,8 +22,8 @@ class UserEloquentRepository implements UserRepository
         return $user->update($attributes);
     }
 
-    public function delete(User $user): bool
+    public function delete(String $id): bool
     {
-        return $user->delete();
+        return User::where('id', $id)->update(['isDeleted' => 1]);
     }
 }

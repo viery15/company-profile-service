@@ -29,8 +29,8 @@ class UserService
         return $this->userRepository->update($user, $attributes);
     }
 
-    public function delete(User $user): bool
+    public function delete(String $id): bool
     {
-        return $this->userRepository->delete($user);
+        return $this->userRepository->delete($id);
     }
 }

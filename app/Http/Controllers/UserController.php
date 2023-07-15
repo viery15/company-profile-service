@@ -34,4 +34,14 @@ class UserController extends Controller
             'data' => $user,
         ], 201);
     }
+
+    public function delete(string $id)
+    {
+        $this->userService->delete($id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'User deleted successfully.',
+        ], 200);
+    }
 }

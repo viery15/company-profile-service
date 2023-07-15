@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/users', [UserController::class, 'findAll']);
     Route::post('/users', [UserController::class, 'store']);
+    Route::delete('/users/{id}', [UserController::class, 'delete']);
 
     Route::post('/posts', [PostController::class, 'store']);
     Route::delete('/posts/{id}', [PostController::class, 'delete']);
