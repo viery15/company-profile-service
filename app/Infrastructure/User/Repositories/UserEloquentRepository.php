@@ -17,13 +17,18 @@ class UserEloquentRepository implements UserRepository
         return User::create($attributes);
     }
 
-    public function update(User $user, array $attributes): bool
+    public function patch($id, array $attributes): bool
     {
-        return $user->update($attributes);
+        return User::where('id', $id)->update($attributes);
     }
 
     public function delete(String $id): bool
     {
         return User::where('id', $id)->update(['isDeleted' => 1]);
+    }
+
+    public function findOneByEmail(string $email): User
+    {
+        return User::where(['email' => $email, 'isDeleted' => 1])->first();
     }
 }

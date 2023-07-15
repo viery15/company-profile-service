@@ -21,12 +21,20 @@ class UserService
 
     public function create(array $attributes): User
     {
+        $userDeleted = $this->userRepository->findOneByEmail($attributes['email']);
+        if ($userDeleted != null) {
+            $attributes['isDeleted'] = 0;
+            $attributes['isActive'] = 1;
+            $this->userRepository->patch($userDeleted['id'], $attributes);
+            return $userDeleted;
+        }
+
         return $this->userRepository->create($attributes);
     }
 
-    public function update(User $user, array $attributes): bool
+    public function update(String $id, array $attributes): bool
     {
-        return $this->userRepository->update($user, $attributes);
+        return $this->userRepository->patch($id, $attributes);
     }
 
     public function delete(String $id): bool
