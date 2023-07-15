@@ -29,6 +29,6 @@ class UserEloquentRepository implements UserRepository
 
     public function findOneByEmail(string $email): ?User
     {
-        return User::where(['email' => $email, 'isDeleted' => 1])->first();
+        return User::where(['email' => $email, 'isActive' => 0])->first();
     }
 }
