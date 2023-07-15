@@ -9,7 +9,7 @@ class UserEloquentRepository implements UserRepository
 {
     public function findAll(): array
     {
-        return User::where(['isDeleted' => 0, 'isActive' => 1])->get()->toArray();
+        return User::where(['isDeleted' => 0])->get()->toArray();
     }
 
     public function create(array $attributes): User
