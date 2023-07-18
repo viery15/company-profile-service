@@ -12,7 +12,8 @@ class PostEloquentRepository implements PostRepository
         $categoryId = $category != null ? $category : null;
 
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')
+            ->join('users', 'posts.updatedBy', '=', 'users.id')
+            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail', 'users.name as createdByName')
             ->when($categoryId !== null, function ($query) use ($categoryId) {
                 return $query->where('categoryId', $categoryId);
             })
