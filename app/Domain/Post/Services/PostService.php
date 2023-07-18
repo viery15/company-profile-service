@@ -39,6 +39,7 @@ class PostService
     {
         $user = getUserFromToken();
         $attributes['createdBy'] = $user->id;
+        $attributes['updatedBy'] = $user->id;
         $attributes['path'] = $this->validateAndGeneratePathByTitle($attributes['title']);
 
         return $this->postRepository->create($attributes);
@@ -57,6 +58,8 @@ class PostService
 
     public function patch(array $post): bool
     {
+        $user = getUserFromToken();
+        $post['updatedBy'] = $user->id;
         return $this->postRepository->patch($post['id'], $post);
     }
 
