@@ -9,7 +9,13 @@ class CategoryEloquentRepository implements CategoryRepository
 {
     public function findAll(): array
     {
-        return Category::where('isDeleted', 0)->orderBy('seq', 'ASC')->with('posts')->get()->toArray();
+        return Category::join('users', 'categories.updatedBy', '=', 'users.id')
+            ->select('categories.*', 'users.name as updatedByName')
+            ->where('categories.isDeleted', 0)
+            ->orderBy('seq', 'ASC')
+            ->with('posts')
+            ->get()
+            ->toArray();
     }
 
     public function create(array $attributes): Category
