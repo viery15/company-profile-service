@@ -16,6 +16,7 @@ class Post extends Model
         'path',
         'thumbnail',
         'createdBy',
+        'updatedBy',
     ];
 
     public function category()
