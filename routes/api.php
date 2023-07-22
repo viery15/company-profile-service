@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
@@ -24,6 +25,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 
     Route::post('/upload', [FileController::class, 'upload']);
+
+    Route::post('/catalogs', [CatalogController::class, 'store']);
 });
 
 Route::post('login', [LoginController::class, 'login']);
@@ -34,3 +37,4 @@ Route::get('/latest-promo', [PostController::class, 'latestPromo']);
 Route::get('/configurations', [ConfigurationController::class, 'findAll']);
 
 Route::get('/categories', [CategoryController::class, 'findAll']);
+Route::get('/catalogs', [CatalogController::class, 'findAll']);

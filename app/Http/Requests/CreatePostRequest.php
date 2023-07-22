@@ -18,6 +18,8 @@ class CreatePostRequest extends FormRequest
             'categoryId' => 'required|integer|max:255',
             'content' => 'required|string',
             'thumbnail' => 'required|string',
+            'catalog' => 'string',
+            'catalogDescription' => 'string',
         ];
     }
 }

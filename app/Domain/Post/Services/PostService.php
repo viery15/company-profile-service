@@ -2,6 +2,7 @@
 
 namespace App\Domain\Post\Services;
 
+use App\Domain\Catalog\Services\CatalogService;
 use App\Domain\Post\Entities\Post;
 use App\Domain\Post\Repositories\PostRepository;
 use App\Exceptions\CommonException;
@@ -9,10 +10,12 @@ use App\Exceptions\CommonException;
 class PostService
 {
     protected $postRepository;
+    protected $catalogService;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, CatalogService $catalogService)
     {
         $this->postRepository = $postRepository;
+        $this->catalogService = $catalogService;
     }
 
     public function findAll($category, $limit): array
@@ -42,7 +45,16 @@ class PostService
         $attributes['updatedBy'] = $user->id;
         $attributes['path'] = $this->validateAndGeneratePathByTitle($attributes['title']);
 
-        return $this->postRepository->create($attributes);
+        $createdPost = $this->postRepository->create($attributes);
+        if (isset($attributes['catalog'])) {
+            $this->catalogService->create([
+                'path' => $attributes['catalog'],
+                'description' => $attributes['catalogDescription'] ?? '',
+                'postId' => $createdPost->id
+            ]);
+        }
+
+        return $createdPost;
     }
 
     function validateAndGeneratePathByTitle(string $title)
