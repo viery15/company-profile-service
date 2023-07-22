@@ -33,7 +33,7 @@ class PostEloquentRepository implements PostRepository
     public function findOneById(string $id): Post
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
-            ->join('catalogs', 'posts.id', '=', 'catalogs.postId')
+            ->leftJoin('catalogs', 'posts.id', '=', 'catalogs.postId')
             ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail', 'catalogs.path as catalog')
             ->where('posts.id', $id)
             ->first();
