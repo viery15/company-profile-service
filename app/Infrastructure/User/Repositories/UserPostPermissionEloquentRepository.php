@@ -12,4 +12,9 @@ class UserPostPermissionEloquentRepository implements UserPostPermissionReposito
     {
         return UserPostPermission::insert($datas);
     }
+
+    public function findByUserId(string $userId)
+    {
+        return UserPostPermission::where(['userId' => $userId])->get()->toArray();
+    }
 }

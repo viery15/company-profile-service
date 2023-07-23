@@ -20,7 +20,21 @@ class UserService
 
     public function findAll(): array
     {
-        return $this->userRepository->findAll();
+        $users = $this->userRepository->findAll();
+        $result = [];
+        foreach ($users as $user) {
+            $userPermissions = $this->userPostPermissionRepository->findByUserId($user['id']);
+            $categoryIds = [];
+            foreach ($userPermissions as $userPermission) {
+                array_push($categoryIds, $userPermission['categoryId']);
+            }
+
+            $user['postPermissions'] = $categoryIds;
+
+            array_push($result, $user);
+        }
+
+        return $result;
     }
 
     public function create(array $attributes): User
