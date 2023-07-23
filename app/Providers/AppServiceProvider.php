@@ -18,7 +18,9 @@ use App\Domain\Configuration\Entities\Configuration;
 use App\Domain\File\Entities\File;
 use App\Infrastructure\File\Repositories\FileEloquentRepository;
 use App\Domain\File\Repositories\FileRepository;
+use App\Domain\User\Repositories\UserPostPermissionRepository;
 use App\Infrastructure\Catalog\Repositories\CatalogEloquentRepository;
+use App\Infrastructure\User\Repositories\UserPostPermissionEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -47,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->bind(CatalogRepository::class, function () {
             return new CatalogEloquentRepository(new File());
+        });
+        $this->app->bind(UserPostPermissionRepository::class, function () {
+            return new UserPostPermissionEloquentRepository(new File());
         });
     }
 

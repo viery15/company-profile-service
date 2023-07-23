@@ -3,15 +3,19 @@
 namespace App\Domain\User\Services;
 
 use App\Domain\User\Entities\User;
+use App\Domain\User\Repositories\UserPostPermissionRepository;
 use App\Domain\User\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
     protected $userRepository;
+    protected $userPostPermissionRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, UserPostPermissionRepository $userPostPermissionRepository)
     {
         $this->userRepository = $userRepository;
+        $this->userPostPermissionRepository = $userPostPermissionRepository;
     }
 
     public function findAll(): array
@@ -25,11 +29,27 @@ class UserService
         if ($userDeleted != null) {
             $attributes['isDeleted'] = 0;
             $attributes['isActive'] = 1;
+            $attributes['password'] = Hash::make($attributes['password']);
             $this->userRepository->patch($userDeleted['id'], $attributes);
             return $userDeleted;
         }
+        $createdUser = $this->userRepository->create($attributes);
 
-        return $this->userRepository->create($attributes);
+        if (isset($attributes['postPermission'])) {
+            $this->createPostPermission($createdUser->id, $attributes['postPermission']);
+        }
+
+        return $createdUser;
+    }
+
+    function createPostPermission($userId, $categoryIds)
+    {
+        $datas = [];
+        foreach ($categoryIds as $categoryId) {
+            array_push($datas, ['userId' => $userId, 'categoryId' => $categoryId]);
+        }
+
+        $this->userPostPermissionRepository->createMany($datas);
     }
 
     public function patch(String $id, array $attributes): bool
