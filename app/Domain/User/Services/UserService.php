@@ -49,8 +49,8 @@ class UserService
         }
         $createdUser = $this->userRepository->create($attributes);
 
-        if (isset($attributes['postPermission'])) {
-            $this->createPostPermission($createdUser->id, $attributes['postPermission']);
+        if (isset($attributes['postPermissions'])) {
+            $this->createPostPermission($createdUser->id, $attributes['postPermissions']);
         }
 
         return $createdUser;
