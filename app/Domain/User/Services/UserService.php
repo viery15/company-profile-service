@@ -40,16 +40,15 @@ class UserService
     public function create(array $attributes): User
     {
         $userDeleted = $this->userRepository->findOneByEmail($attributes['email']);
+        $createdUser = [];
         if ($userDeleted != null) {
-            $attributes['isDeleted'] = 0;
-            $attributes['isActive'] = 1;
-            $attributes['password'] = Hash::make($attributes['password']);
-            $this->userRepository->patch($userDeleted['id'], $attributes);
-            return $userDeleted;
+            $this->patch($userDeleted->id, $attributes);
+        } else {
+            $createdUser = $this->userRepository->create($attributes);
         }
-        $createdUser = $this->userRepository->create($attributes);
 
         if (isset($attributes['postPermissions'])) {
+            $this->userPostPermissionRepository->deleteByUserId($createdUser->id);
             $this->createPostPermission($createdUser->id, $attributes['postPermissions']);
         }
 
@@ -68,6 +67,18 @@ class UserService
 
     public function patch(String $id, array $attributes): bool
     {
+        $attributes['isDeleted'] = 0;
+        $attributes['isActive'] = 1;
+        if (isset($attributes['password'])) {
+            $attributes['password'] = Hash::make($attributes['password']);
+        }
+
+        if (isset($attributes['postPermissions'])) {
+            $this->userPostPermissionRepository->deleteByUserId($id);
+            $this->createPostPermission($id, $attributes['postPermissions']);
+        }
+        unset($attributes['postPermissions']);
+
         return $this->userRepository->patch($id, $attributes);
     }
 

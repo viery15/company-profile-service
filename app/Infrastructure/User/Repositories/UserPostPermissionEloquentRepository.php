@@ -17,4 +17,9 @@ class UserPostPermissionEloquentRepository implements UserPostPermissionReposito
     {
         return UserPostPermission::where(['userId' => $userId])->get()->toArray();
     }
+
+    public function deleteByUserId(string $userId)
+    {
+        return UserPostPermission::where(['userId' => $userId])->delete();
+    }
 }
