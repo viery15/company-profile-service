@@ -7,7 +7,7 @@ use App\Domain\Post\Repositories\PostRepository;
 
 class PostEloquentRepository implements PostRepository
 {
-    public function findAll($category, $limit = null): array
+    public function findAll($category = null, $limit = null, $includeCategory = null): array
     {
         $categoryId = $category != null ? $category : null;
 
@@ -19,6 +19,9 @@ class PostEloquentRepository implements PostRepository
             })
             ->when($limit !== null, function ($query) use ($limit) {
                 return $query->limit($limit);
+            })
+            ->when($includeCategory !== null, function ($query) use ($includeCategory) {
+                return $query->whereIn('categories.id', $includeCategory);
             })
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();

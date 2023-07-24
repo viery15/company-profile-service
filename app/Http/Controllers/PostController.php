@@ -27,6 +27,16 @@ class PostController extends Controller
         ], 200);
     }
 
+    public function findAllFromAdmin()
+    {
+        $result = $this->postService->findAllFromAdmin();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function findOneByPath(string $path)
     {
         $result = $this->postService->findOneByPath($path);

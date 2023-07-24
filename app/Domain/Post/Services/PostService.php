@@ -5,22 +5,32 @@ namespace App\Domain\Post\Services;
 use App\Domain\Catalog\Services\CatalogService;
 use App\Domain\Post\Entities\Post;
 use App\Domain\Post\Repositories\PostRepository;
+use App\Domain\User\Services\UserService;
 use App\Exceptions\CommonException;
 
 class PostService
 {
     protected $postRepository;
     protected $catalogService;
+    protected $userService;
 
-    public function __construct(PostRepository $postRepository, CatalogService $catalogService)
+    public function __construct(PostRepository $postRepository, CatalogService $catalogService, UserService $userService)
     {
         $this->postRepository = $postRepository;
         $this->catalogService = $catalogService;
+        $this->userService = $userService;
     }
 
     public function findAll($category, $limit): array
     {
         return $this->postRepository->findAll($category, $limit);
+    }
+
+    public function findAllFromAdmin(): array
+    {
+        $user = getUserFromToken();
+        $userPermissions = $this->userService->getAndMapUserPostPermission($user->id);
+        return $this->postRepository->findAll(null, null, $userPermissions);
     }
 
     public function findOneByPath(string $path): Post

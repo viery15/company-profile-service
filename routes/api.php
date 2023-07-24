@@ -16,6 +16,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::patch('/users/{id}', [UserController::class, 'patch']);
 
     Route::post('/posts', [PostController::class, 'store']);
+    Route::get('/admin/posts', [PostController::class, 'findAllFromAdmin']);
     Route::delete('/posts/{id}', [PostController::class, 'delete']);
     Route::patch('/posts/{id}', [PostController::class, 'patch']);
 
