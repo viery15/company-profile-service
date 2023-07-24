@@ -23,18 +23,22 @@ class UserService
         $users = $this->userRepository->findAll();
         $result = [];
         foreach ($users as $user) {
-            $userPermissions = $this->userPostPermissionRepository->findByUserId($user['id']);
-            $categoryIds = [];
-            foreach ($userPermissions as $userPermission) {
-                array_push($categoryIds, $userPermission['categoryId']);
-            }
-
-            $user['postPermissions'] = $categoryIds;
-
+            $user['postPermissions'] = $this->getAndMapUserPostPermission($user->id);
             array_push($result, $user);
         }
 
         return $result;
+    }
+
+    public function getAndMapUserPostPermission($userId)
+    {
+        $userPermissions = $this->userPostPermissionRepository->findByUserId($userId);
+        $categoryIds = [];
+        foreach ($userPermissions as $userPermission) {
+            array_push($categoryIds, $userPermission['categoryId']);
+        }
+
+        return $categoryIds;
     }
 
     public function create(array $attributes): User
