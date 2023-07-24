@@ -24,6 +24,10 @@ class LoginService
             throw new CommonException('Invalid Credentials', 'INVALID_CREDENTIALS', 401);
         }
 
-        return $token;
+        $user = JWTAuth::user();
+        $userDetail = $this->userRepository->findOneById($user->id);
+        $tokenWithClaims = JWTAuth::claims($userDetail->toArray())->attempt($credentials);
+
+        return $tokenWithClaims;
     }
 }

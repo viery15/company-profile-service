@@ -31,4 +31,9 @@ class UserEloquentRepository implements UserRepository
     {
         return User::where(['email' => $email, 'isActive' => 0])->first();
     }
+
+    public function findOneById(string $id): ?User
+    {
+        return User::where(['id' => $id, 'isActive' => 1])->first();
+    }
 }

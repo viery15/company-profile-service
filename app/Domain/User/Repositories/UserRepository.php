@@ -7,6 +7,7 @@ use App\Domain\User\Entities\User;
 interface UserRepository
 {
     public function findAll(): array;
+    public function findOneById(string $idUser): ?User;
     public function findOneByEmail(string $email): ?User;
     public function create(array $attributes): User;
     public function patch(string $id, array $attributes): bool;
