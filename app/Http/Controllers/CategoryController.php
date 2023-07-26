@@ -25,6 +25,16 @@ class CategoryController extends Controller
         ], 200);
     }
 
+    public function findAllFromAdmin()
+    {
+        $result = $this->categoryService->findAllFromAdmin();
+
+        return response()->json([
+            'success' => true,
+            'data' => $result,
+        ], 200);
+    }
+
     public function store(CreateCategoryRequest $request)
     {
         $result = $this->categoryService->create($request->validated());

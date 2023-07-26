@@ -7,13 +7,16 @@ use App\Domain\Category\Repositories\CategoryRepository;
 
 class CategoryEloquentRepository implements CategoryRepository
 {
-    public function findAll(): array
+    public function findAll($ids = null): array
     {
         return Category::join('users', 'categories.updatedBy', '=', 'users.id')
             ->select('categories.*', 'users.name as updatedByName')
             ->where('categories.isDeleted', 0)
             ->orderBy('seq', 'ASC')
             ->with('posts')
+            ->when($ids !== null, function ($query) use ($ids) {
+                return $query->whereIn('categories.id', $ids);
+            })
             ->get()
             ->toArray();
     }

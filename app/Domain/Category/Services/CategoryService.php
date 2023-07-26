@@ -4,19 +4,29 @@ namespace App\Domain\Category\Services;
 
 use App\Domain\Category\Entities\Category;
 use App\Domain\Category\Repositories\CategoryRepository;
+use App\Domain\User\Services\UserService;
 
 class CategoryService
 {
     protected $categoryRepository;
+    protected $userService;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(CategoryRepository $categoryRepository, UserService $userService)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->userService = $userService;
     }
 
     public function findAll(): array
     {
         return $this->categoryRepository->findAll();
+    }
+
+    public function findAllFromAdmin(): array
+    {
+        $user = getUserFromToken();
+        $userPermissions = $this->userService->getAndMapUserPostPermission($user->id);
+        return $this->categoryRepository->findAll($userPermissions);
     }
 
     public function create(array $attributes): Category

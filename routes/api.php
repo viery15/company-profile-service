@@ -22,6 +22,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::post('/categories', [CategoryController::class, 'store']);
     Route::patch('/categories/{id}', [CategoryController::class, 'patch']);
+    Route::get('/admin/categories', [CategoryController::class, 'findAllFromAdmin']);
 
     Route::patch('/configurations/bulk', [ConfigurationController::class, 'patchBulk']);
 
