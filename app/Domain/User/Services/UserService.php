@@ -23,7 +23,7 @@ class UserService
         $users = $this->userRepository->findAll();
         $result = [];
         foreach ($users as $user) {
-            $user['postPermissions'] = $this->getAndMapUserPostPermission($user->id);
+            $user['postPermissions'] = $this->getAndMapUserPostPermission($user['id']);
             array_push($result, $user);
         }
 
