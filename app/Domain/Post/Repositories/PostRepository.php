@@ -6,7 +6,7 @@ use App\Domain\Post\Entities\Post;
 
 interface PostRepository
 {
-    public function findAll($category = null, $limit = null, $includeCategory = null): array;
+    public function findAll($category = null, $limit = null, $includeCategory = null, $searchValue = null): array;
     public function findOneByPath(string $path): ?Post;
     public function findOneById(string $id): Post;
     public function findLatestPromo(): Post;

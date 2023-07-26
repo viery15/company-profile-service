@@ -21,9 +21,9 @@ class PostService
         $this->userService = $userService;
     }
 
-    public function findAll($category, $limit): array
+    public function findAll($category, $limit, $searchValue): array
     {
-        return $this->postRepository->findAll($category, $limit);
+        return $this->postRepository->findAll($category, $limit, null, $searchValue);
     }
 
     public function findAllFromAdmin(): array

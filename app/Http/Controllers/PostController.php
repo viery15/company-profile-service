@@ -19,7 +19,8 @@ class PostController extends Controller
     {
         $categoryId = $request->query('categoryId', null);
         $limit = $request->query('limit', null);
-        $result = $this->postService->findAll($categoryId, $limit);
+        $searchValue = $request->query('searchValue', null);
+        $result = $this->postService->findAll($categoryId, $limit, $searchValue);
 
         return response()->json([
             'success' => true,
