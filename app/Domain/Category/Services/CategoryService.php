@@ -17,9 +17,9 @@ class CategoryService
         $this->userService = $userService;
     }
 
-    public function findAll(): array
+    public function findAll($fromAdmin): array
     {
-        return $this->categoryRepository->findAll();
+        return $this->categoryRepository->findAll(null, $fromAdmin);
     }
 
     public function findAllFromAdmin(): array

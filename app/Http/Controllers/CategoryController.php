@@ -15,9 +15,10 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function findAll()
+    public function findAll(Request $request)
     {
-        $result = $this->categoryService->findAll();
+        $fromAdmin = $request->query('fromAdmin', false);
+        $result = $this->categoryService->findAll($fromAdmin);
 
         return response()->json([
             'success' => true,

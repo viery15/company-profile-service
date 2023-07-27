@@ -7,7 +7,7 @@ use App\Domain\Category\Repositories\CategoryRepository;
 
 class CategoryEloquentRepository implements CategoryRepository
 {
-    public function findAll($ids = null, $fromAdmin = false): array
+    public function findAll($ids = null, bool $fromAdmin = false): array
     {
         return Category::join('users', 'categories.updatedBy', '=', 'users.id')
             ->select('categories.*', 'users.name as updatedByName')
