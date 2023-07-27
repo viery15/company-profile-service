@@ -26,7 +26,7 @@ class CategoryService
     {
         $user = getUserFromToken();
         $userPermissions = $this->userService->getAndMapUserPostPermission($user->id);
-        return $this->categoryRepository->findAll($userPermissions);
+        return $this->categoryRepository->findAll($userPermissions, true);
     }
 
     public function create(array $attributes): Category
