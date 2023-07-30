@@ -33,17 +33,17 @@ class PostService
         return $this->postRepository->findAll(null, null, $userPermissions);
     }
 
-    public function findOneByPath(string $path): Post
+    public function findOneByPath(string $path): ?Post
     {
         return $this->postRepository->findOneByPath($path);
     }
 
-    public function findOneById(string $id): Post
+    public function findOneById(string $id): ?Post
     {
         return $this->postRepository->findOneById($id);
     }
 
-    public function findLatestPromo(): Post
+    public function findLatestPromo(): ?Post
     {
         return $this->postRepository->findLatestPromo();
     }

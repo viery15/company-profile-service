@@ -36,7 +36,7 @@ class PostEloquentRepository implements PostRepository
             ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail')->where('path', $path)->first();
     }
 
-    public function findOneById(string $id): Post
+    public function findOneById(string $id): ?Post
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
             ->leftJoin('catalogs', 'posts.id', '=', 'catalogs.postId')
@@ -45,7 +45,7 @@ class PostEloquentRepository implements PostRepository
             ->first();
     }
 
-    public function findLatestPromo(): Post
+    public function findLatestPromo(): ?Post
     {
         return Post::where('categoryId', 2)->latest()->first();
     }
