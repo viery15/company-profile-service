@@ -40,7 +40,7 @@ class PostEloquentRepository implements PostRepository
     {
         return Post::join('categories', 'posts.categoryId', '=', 'categories.id')
             ->leftJoin('catalogs', 'posts.id', '=', 'catalogs.postId')
-            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail', 'catalogs.path as catalog')
+            ->select('posts.*', 'categories.name as category', 'categories.thumbnail as categoryThumbnail', 'catalogs.path as catalog', 'catalogs.description as catalogTitle')
             ->where('posts.id', $id)
             ->first();
     }
